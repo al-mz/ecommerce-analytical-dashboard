@@ -13,13 +13,13 @@ services:
       - ./utils:/media/ecommerce_analytics/utils
       - ./examples:/media/ecommerce_analytics/examples
       - ./environment.yml:/media/ecommerce_analytics/environment.yml
-      - ./wait-for-it.sh:/media/ecommerce_analytics/wait-for-it.sh
+      - ./wait-for-it.sh:/media/ecommerce_analytics/wait-for-it.sh:ro
     ports:
       - "8000:8000"
     depends_on:
       - db
     command: >
-      ./wait-for-it.sh db:5432 -- sh -c "conda run --no-capture-output -n marketing_analysis python ./examples/olist.py"
+      sh -c "tail -f /dev/null"
   db:
     image: postgres
     container_name: ecommerce_analytics_db
@@ -27,8 +27,10 @@ services:
       - ./db-data/:/var/lib/postgresql/data/
     ports:
       - 5433:5432
-    env_file:
-      - ./config/.postgres/.postgres.env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ecommerce
   redis:
     image: redis
     restart: always
@@ -36,17 +38,18 @@ services:
       - redis:/data
   superset:
     image: apache/superset
-    container_name: superset
+    container_name: superset_ecom
     restart: always
     depends_on:
       - db
       - redis
     ports:
       - "8088:8088"
-    env_file:
-      - ./config/.superset/.superset.env
+    environment:
+      MAPBOX_API_KEY: pk.eyJ1IjoiYWxpbWhtemFkZWgiLCJhIjoiY2w1NnJyeTRyMTAxeDNnbDgydm02aDN1diJ9.OZ7kMqA6NgYAJ9_F9xNqxw
     volumes:
       - ./superset-data:/app/superset_home/
+      - ./config/superset_config.py:/etc/superset/superset_config.py
 
 volumes:
   db:
