@@ -1,0 +1,53 @@
+version: "3.9"
+services:
+  develop:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile
+    image: ecommerce_analytics
+    volumes:
+      - ./config:/media/ecommerce_analytics/config
+      - ./data:/media/ecommerce_analytics/data
+      - ./database:/media/ecommerce_analytics/database
+      - ./logs:/media/ecommerce_analytics/logs
+      - ./utils:/media/ecommerce_analytics/utils
+      - ./examples:/media/ecommerce_analytics/examples
+      - ./environment.yml:/media/ecommerce_analytics/environment.yml
+      - ./wait-for-it.sh:/media/ecommerce_analytics/wait-for-it.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      ./wait-for-it.sh db:5432 -- sh -c "conda run --no-capture-output -n marketing_analysis python ./examples/olist.py"
+  db:
+    image: postgres
+    container_name: ecommerce_analytics_db
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+    ports:
+      - 5433:5432
+    env_file:
+      - ./config/.postgres/.postgres.env
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - redis:/data
+  superset:
+    image: apache/superset
+    container_name: superset
+    restart: always
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "8088:8088"
+    env_file:
+      - ./config/.superset/.superset.env
+    volumes:
+      - ./superset-data:/app/superset_home/
+
+volumes:
+  db:
+  redis:

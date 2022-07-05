@@ -1,0 +1,2 @@
+DROP SCHEMA IF EXISTS dbview_schema CASCADE;
+CREATE SCHEMA dbview_schema;
