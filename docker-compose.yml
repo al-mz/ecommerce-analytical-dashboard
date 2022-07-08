@@ -31,6 +31,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: ecommerce
+    shm_size: '4gb'
   redis:
     image: redis
     restart: always
@@ -38,7 +39,7 @@ services:
       - redis:/data
   superset:
     image: apache/superset
-    container_name: superset_ecom
+    container_name: superset
     restart: always
     depends_on:
       - db
