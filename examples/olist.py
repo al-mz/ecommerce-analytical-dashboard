@@ -74,6 +74,10 @@ class Olist():
         self.logger = get_logger()
 
     def load_inputs(self):
+
+        # uncompress zip file
+        self.unzip_file(os.path.join(self.config['data_path'], 'input', 'olist', 'olist.zip'))
+
         # reads in input csv files
         dfs = {}
         for dirname, _, filenames in os.walk('./data/input/olist'):
@@ -122,19 +126,19 @@ class Olist():
 
     def create_views(self):
 
-        # Customer purchase trend
-        self.logger.info("Creating Olist PostgreSQL Views: Customer Purchase Trend ...")
+        # Create views
+        self.logger.info("Creating Olist PostgreSQL Views ...")
         with self.engine.connect() as con:
-            with open(os.path.join(CUR_DIR, "Customer_purchase_trend.sql")) as file:
+            with open(os.path.join(CUR_DIR, "views.sql")) as file:
                 query = sa.text(file.read())
                 con.execute(query)
+
+    @staticmethod
+    def unzip_file(path_to_zip_file):
+        import zipfile
+        with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
+            zip_ref.extractall(pathlib.Path(path_to_zip_file).parent.resolve())
         
-        # Customer purchase trend
-        self.logger.info("Creating Olist PostgreSQL Views: Cleaned Sales Dataset ...")
-        with self.engine.connect() as con:
-            with open(os.path.join(CUR_DIR, "cleaned_sales_data.sql")) as file:
-                query = sa.text(file.read())
-                con.execute(query)
 
 if __name__=='__main__':
 
