@@ -41,27 +41,6 @@ logger = get_logger()
 logger.handlers = []
 logger = get_logger()
 
-# create views
-class CreateView(DDLElement):
-    def __init__(self, name, selectable):
-        self.name = name
-        self.selectable = selectable
-
-@compiler.compiles(CreateView)
-def compile(element, compiler, **kw):
-    return "CREATE VIEW %s AS %s" % (
-        element.name,
-        compiler.sql_compiler.process(element.selectable, literal_binds=True),
-    )
-
-def view(name, metadata, selectable):
-    t = table(name)
-
-    for c in selectable.c:
-        c._make_proxy(t)
-
-    sa.event.listen(metadata, "after_create", CreateView(name, selectable))
-    return t
 
 class Olist():
 
@@ -121,8 +100,12 @@ class Olist():
             
             if table =='olist_order_items_dataset':
                 df['shipping_limit_date'] = pd.to_datetime(df['shipping_limit_date'])
-                
-            df.to_sql(table, con=self.engine, if_exists='replace', index=False)
+            
+            try:
+                df.to_sql(table, con=self.engine, if_exists='fail', index=False)
+            except:
+                self.logger.info(f"Table {table} already exists, skipping it ...")
+
 
     def create_views(self):
 
