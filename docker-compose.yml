@@ -27,10 +27,8 @@ services:
       - ./db-data/:/var/lib/postgresql/data/
     ports:
       - 5433:5432
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: ecommerce
+    env_file:
+      - ./config/.postgres/.postgres.env
     shm_size: '4gb'
   redis:
     image: redis
