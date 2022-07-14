@@ -1,5 +1,5 @@
 DROP VIEW IF EXISTS dbview_schema.cleaned_sales_data CASCADE; -- cleaned sales data
-CREATE VIEW dbview_schema.cleaned_sales_data AS
+CREATE MATERIALIZED VIEW dbview_schema.cleaned_sales_data AS
     SELECT olist_orders_dataset.order_id, order_purchase_timestamp, payment_value, product_category_name, 
     customer_city, geolocation_lat, geolocation_lng
         FROM olist_order_payments_dataset
