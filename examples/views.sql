@@ -9,15 +9,6 @@ CREATE MATERIALIZED VIEW dbview_schema.cleaned_sales_data AS
         WHERE order_status = 'delivered'
         ORDER BY order_purchase_timestamp;
 
-DROP VIEW IF EXISTS dbview_schema.geolocation CASCADE; -- geolocation data
-CREATE MATERIALIZED VIEW dbview_schema.geolocation AS
-    SELECT olist_orders_dataset.order_id, order_purchase_timestamp, customer_city, CAST(geolocation_lat as REAL), CAST(geolocation_lng as REAl)
-        FROM olist_orders_dataset
-        JOIN olist_customers_dataset on olist_customers_dataset.customer_id = olist_orders_dataset.customer_id
-        JOIN olist_geolocation_dataset on olist_customers_dataset.customer_zip_code_prefix = olist_geolocation_dataset.geolocation_zip_code_prefix
-        WHERE order_status = 'delivered'
-        ORDER BY order_purchase_timestamp;
-
 DROP VIEW IF EXISTS dbview_schema.customer_purchase_trend CASCADE; -- customer purchase trend
 CREATE VIEW dbview_schema.customer_purchase_trend AS
 select
@@ -39,3 +30,12 @@ group by Year, month, month_no, customer_id,order_id,order_delivered_customer_da
 order by order_delivered_customer_date asc) a
 group by month, month_no
 order by month_no asc
+
+-- DROP VIEW IF EXISTS dbview_schema.geolocation CASCADE; -- geolocation data
+-- CREATE MATERIALIZED VIEW dbview_schema.geolocation AS
+--     SELECT olist_orders_dataset.order_id, order_purchase_timestamp, customer_city, CAST(geolocation_lat as REAL), CAST(geolocation_lng as REAl)
+--         FROM olist_orders_dataset
+--         JOIN olist_customers_dataset on olist_customers_dataset.customer_id = olist_orders_dataset.customer_id
+--         JOIN olist_geolocation_dataset on olist_customers_dataset.customer_zip_code_prefix = olist_geolocation_dataset.geolocation_zip_code_prefix
+--         WHERE order_status = 'delivered'
+--         ORDER BY order_purchase_timestamp;
