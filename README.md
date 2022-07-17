@@ -10,7 +10,7 @@ This is a supporting dashboard for the [Brazilian E-Commerce](https://www.kaggle
 
 # Installation
 1. Clone the repository
-2. Createdocker contaienrs
+2. Build contaienrs
 ```
 $ cd ecommerce-analytics
 $ docker-compose up
