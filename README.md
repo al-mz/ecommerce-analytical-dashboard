@@ -16,8 +16,8 @@ $ cd ecommerce-analytics
 $ docker-compose up
 ```
 
-3. Initialize a local Superset Instance
-- Setup your local admin account
+## Initialize a local Superset Instance
+3. Setup your local admin account
 ```
 $ docker exec -it superset superset fab create-admin\
               --username admin \
