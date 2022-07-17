@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "tail -f /dev/null"
+      ./wait-for-it.sh db:5432 -- sh -c "conda run --no-capture-output -n marketing_analysis python ./examples/olist.py"
   db:
     image: postgres
     container_name: ecommerce_analytics_db
@@ -44,8 +44,8 @@ services:
       - redis
     ports:
       - "8088:8088"
-    environment:
-      MAPBOX_API_KEY: pk.eyJ1IjoiYWxpbWhtemFkZWgiLCJhIjoiY2w1NnJyeTRyMTAxeDNnbDgydm02aDN1diJ9.OZ7kMqA6NgYAJ9_F9xNqxw
+    env_file:
+      - ./config/.superset/.superset.env
     volumes:
       - ./superset-data:/app/superset_home/
       - ./config/superset_config.py:/etc/superset/superset_config.py
