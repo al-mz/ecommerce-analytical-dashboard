@@ -53,6 +53,19 @@ $ docker exec -it superset superset init
 username: admin
 password: admin
 ```
+## Create a quarterly sales chart by product line
+2. Navigate to SQL Lab which provides a built-in SQL IDE. 
+
+![2022-07-18 20-56-40](https://user-images.githubusercontent.com/59216368/179642702-f7e3494a-2ff7-4c26-adcc-ef5c9a04292d.gif)
+
+3. Write your select query against the provided view and select on "create chart". 
+```
+SELECT *
+FROM dbview_schema.cleaned_sales_data 
+```
+
+4. Create the time-series bar chart.
+
 
 
 
