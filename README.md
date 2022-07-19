@@ -18,7 +18,7 @@ You need to install docker and docker-compose prior to running containers.
 $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 ```
 
-2. Start dockerized services. PostgreSQL and Superset will run on ports 5433 just in case you already have Postgres running: 
+2. Start dockerized services. PostgreSQL will run on ports 5433, just in case you already have Postgres running: 
 ```
 $ cd ecommerce-analytical-dashboard && docker-compose up
 ```
