@@ -22,7 +22,6 @@ $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 ```
 $ cd ecommerce-analytical-dashboard && docker-compose up
 ```
-
 ## Initialize a local Superset Instance
 3. Setup your local admin account
 ```
