@@ -1,10 +1,15 @@
 # The Ecommerce Dashboard
-This is a supporting dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides an overview of sales at different timeframes. The dashboard is built with the leverage of open-source [Apache-Superset](https://superset.apache.org/) BI tool using pre-defined Postgres views. It is fully dockerized and can be reproduced in various environments. 
+This is a supporting repo to create analyrical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to 
+1. Automatically convert tabular data in csv format into PostgreSQL tables 
+2. Create pre-defined materialized views for sales and their corresponding geolocation data.
+3. Build a local Superset instance.
+
+The visualizations are backed by open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
 
 ![2022-07-17 16-25-55 (5)](https://user-images.githubusercontent.com/59216368/179426482-de72b9de-8e2f-4c02-9787-1cc4459201de.gif)
 
 # Dependecies
-You need to install docker and docker-compose in order to create containers.
+You need to install docker and docker-compose prior to running containers.
 
 
 # Installation
@@ -44,11 +49,12 @@ $ docker exec -it superset superset init
 
 # Quick start
 
-Login to http://localhost:8080/login/ with the following credentials and take a look:
+1. Login to http://localhost:8080/login/ with the following credentials and take a look:
 ```
 username: admin
 password: admin
 ```
+
 
 
 
