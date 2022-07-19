@@ -4,20 +4,22 @@ This is a supporting dashboard for the [Brazilian E-Commerce](https://www.kaggle
 ![2022-07-17 16-25-55 (5)](https://user-images.githubusercontent.com/59216368/179426482-de72b9de-8e2f-4c02-9787-1cc4459201de.gif)
 
 # Dependecies
-- Docker
-- Docker-compose
+You need to install docker and docker-compose in order to create containers.
 
 
 # Installation
-1. Clone the repository
-2. Createdocker contaienrs
+1. Clone this repo:
 ```
-$ cd ecommerce-analytics
-$ docker-compose up
+$ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 ```
 
-3. Initialize a local Superset Instance
-- Setup your local admin account
+2. Start dockerized services. PostgreSQL and Superset will run on ports 5433 just in case you already have Postgres running: 
+```
+$ cd ecommerce-analytics && docker-compose up
+```
+
+## Initialize a local Superset Instance
+3. Setup your local admin account
 ```
 $ docker exec -it superset superset fab create-admin\
               --username admin \
@@ -39,7 +41,14 @@ $ docker exec -it superset superset load_examples
 ```
 $ docker exec -it superset superset init
 ```
-7. Login and take a look -- navigate to http://localhost:8080/login/ -- u/p: [admin/admin]
+
+# Quick start
+
+Login into http://localhost:8080/login/ using the following credentials:
+```
+username: admin
+password: admin
+```
 
 
 
