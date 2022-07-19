@@ -15,7 +15,7 @@ $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 
 2. Start dockerized services. PostgreSQL and Superset will run on ports 5433 just in case you already have Postgres running: 
 ```
-$ cd ecommerce-analytics && docker-compose up
+$ cd ecommerce-analytical-dashboard && docker-compose up
 ```
 
 ## Initialize a local Superset Instance
@@ -44,7 +44,7 @@ $ docker exec -it superset superset init
 
 # Quick start
 
-Login into http://localhost:8080/login/ using the following credentials:
+Login to http://localhost:8080/login/ with the following credentials and take a look:
 ```
 username: admin
 password: admin
