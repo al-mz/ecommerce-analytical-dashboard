@@ -66,8 +66,8 @@ FROM dbview_schema.cleaned_sales_data
 
 4. Create the time-series bar chart.
 
-![2022-07-18 21-34-08](https://user-images.githubusercontent.com/59216368/179645555-1b7e7f67-ca11-4af0-91a2-feac7f8561e4.gif)
 
+![2022-07-18 21-34-08 (1)](https://user-images.githubusercontent.com/59216368/179645715-1d4d4cf7-9135-451b-8f8a-32ce930ac109.gif)
 
 
 
