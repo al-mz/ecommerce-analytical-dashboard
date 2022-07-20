@@ -25,6 +25,7 @@ $ cd ecommerce-analytical-dashboard && docker-compose up
 
 ## Initialize a local Superset Instance
 3. Setup your local admin account:
+
 ```
 $ docker exec -it superset superset fab create-admin\
               --username admin \
@@ -75,6 +76,7 @@ FROM dbview_schema.cleaned_sales_data
 ```
 
 5. Create the time-series bar chart.
+
 
 
 
