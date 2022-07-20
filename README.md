@@ -64,6 +64,8 @@ POSTGRES_DB=ecommerce_analytics
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password
 ```
+![2022-07-20 09-19-32](https://user-images.githubusercontent.com/59216368/179996498-e996a0be-7c3d-4829-8056-8b9cd067dd51.gif)
+
 
 ## Create a quarterly sales chart by product line
 3. Navigate to SQL Lab which provides a built-in SQL IDE. 
