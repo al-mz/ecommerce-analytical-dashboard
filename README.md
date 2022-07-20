@@ -1,10 +1,10 @@
 # The Ecommerce Dashboard
-This is a supporting repo to create analyrical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to 
+This is a supporting repo to create analyrical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to:  
 1. Automatically convert tabular data in csv format into PostgreSQL tables 
 2. Create materialized views for sales and geolocation data.
 3. Build a local Superset instance.
 
-The visualizations are backed by open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
+The visualizations are backed by the open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
 
 ![2022-07-17 16-25-55 (5)](https://user-images.githubusercontent.com/59216368/179426482-de72b9de-8e2f-4c02-9787-1cc4459201de.gif)
 
@@ -19,6 +19,7 @@ $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 ```
 
 2. Start dockerized services. PostgreSQL will run on ports 5433 just in case you already have Postgres running: 
+
 ```
 $ cd ecommerce-analytical-dashboard && docker-compose up
 ```
@@ -79,6 +80,7 @@ FROM dbview_schema.cleaned_sales_data
 
 
 
+![2022-07-18 21-34-08 (3)](https://user-images.githubusercontent.com/59216368/179645715-1d4d4cf7-9135-451b-8f8a-32ce930ac109.gif)
 
 
 
