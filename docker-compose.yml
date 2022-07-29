@@ -49,6 +49,7 @@ services:
     volumes:
       - ./superset-data:/app/superset_home/
       - ./config/superset_config.py:/etc/superset/superset_config.py
+      - ./docker/docker-init.sh:/app/docker-init.sh
 
 volumes:
   db:
