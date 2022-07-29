@@ -1,0 +1,4 @@
+databases:
+- database_name: olis-quickstart
+  sqlalchemy_uri: postgresql+psycopg2://postgres:password@db:5432/ecommerce_analytics
+  extra: '{"metadata_params":{},"engine_params":{},"metadata_cache_timeout":{},"schemas_allowed_for_file_upload":[]}'
