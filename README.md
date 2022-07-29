@@ -24,29 +24,11 @@ $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 $ cd ecommerce-analytical-dashboard && docker-compose up
 ```
 
-## Initialize a local Superset Instance
-3. Setup your local admin account:
+## Initialize Superset App
+3. After the Docker containers have started and are running, you'll need to bootstrap the cluster to initialize Superset app such as adding Username and Password:
 
 ```
-$ docker exec -it superset superset fab create-admin\
-              --username admin \
-              --firstname Superset \
-              --lastname Admin \
-              --email admin@superset.com \
-              --password admin
-```
-
-4. Migrate local DB to latest:
-```
-$ docker exec -it superset superset db upgrade
-```
-5. Load examples (optional):
-```
-$ docker exec -it superset superset load_examples
-```
-6. Set up roles:
-```
-$ docker exec -it superset superset init
+$ sh boostrapt.sh
 ```
 
 # Quick start
