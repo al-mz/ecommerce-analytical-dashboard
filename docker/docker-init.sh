@@ -51,3 +51,8 @@ echo_step "4" "Complete" "Setting up roles and perms"
 echo_step "5" "Starting" "Importing the Olist Ecommerce datasource"
 superset import-datasources --path ./olis-database.yaml
 echo_step "5" "Complete" "Importing the Olist Ecommerce datasource"
+
+# Import Olist dashboards
+echo_step "6" "Starting" "Importing the Olist dashboard"
+superset import-dashboards -p ./olis-dashboard.zip
+echo_step "6" "Complete" "Importing the Olist dashboard"
