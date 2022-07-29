@@ -50,6 +50,7 @@ services:
       - ./superset-data:/app/superset_home/
       - ./config/superset_config.py:/etc/superset/superset_config.py
       - ./docker/docker-init.sh:/app/docker-init.sh
+      - ./docker/olis-database.yaml:/app/olis-database.yaml
 
 volumes:
   db:
