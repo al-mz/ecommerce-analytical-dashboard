@@ -1,8 +1,9 @@
 # The Ecommerce Dashboard
 This is a supporting repo to create analyrical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to:  
-1. Automatically convert tabular data in csv format into PostgreSQL tables 
+1. Build a PostgreSQL database with Olist Ecommerce datasets. 
 2. Create materialized views for sales and geolocation data.
-3. Build a local Superset instance.
+3. Build and initialize a local Superset instance with default username and password
+4. Import a pre-made dashboard named Olist. 
 
 The visualizations are backed by the open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
 
@@ -18,17 +19,17 @@ You need to install docker and docker-compose prior to running containers.
 $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 ```
 
-2. Start dockerized services. PostgreSQL will run on ports 5433 just in case you already have Postgres running: 
+2. Start dockerized services. PostgreSQL will run on ports 5433, just in case you already have Postgres running: 
 
 ```
 $ cd ecommerce-analytical-dashboard && docker-compose up
 ```
 
 ## Initialize Superset App
-3. After the Docker containers have started and are running, you'll need to bootstrap the cluster to initialize Superset app such as adding Username and Password:
+3. After the Docker containers have started and are running, you'll need to bootstrap the cluster to initialize Superset app and dashboard. The following command will connect Superset to the Olist database and import pre-made dashboard:
 
 ```
-$ sh boostrapt.sh
+$ sh boostrap.sh
 ```
 
 # Quick start
@@ -38,33 +39,8 @@ $ sh boostrapt.sh
 username: admin
 password: admin
 ```
-2. Connect Postgres Database with the following credentials:
-```
-POSTGRES_HOST=db
-POSTGRES_PORT=5432
-POSTGRES_DB=ecommerce_analytics
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-```
-![2022-07-20 09-19-32](https://user-images.githubusercontent.com/59216368/179996498-e996a0be-7c3d-4829-8056-8b9cd067dd51.gif)
 
-
-## Create a quarterly sales chart by product line
-3. Navigate to SQL Lab which provides a built-in SQL IDE. 
-
-![2022-07-18 20-56-40](https://user-images.githubusercontent.com/59216368/179642702-f7e3494a-2ff7-4c26-adcc-ef5c9a04292d.gif)
-
-4. Write your select query against the provided view and select on "create chart":
-```
-SELECT *
-FROM dbview_schema.cleaned_sales_data 
-```
-
-5. Create the time-series bar chart.
-
-
-
-![2022-07-18 21-34-08 (3)](https://user-images.githubusercontent.com/59216368/179645715-1d4d4cf7-9135-451b-8f8a-32ce930ac109.gif)
+2. Navigate to the Dashboards and take a look at the olist dashboard. 
 
 
 
