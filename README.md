@@ -34,7 +34,7 @@ $ sh boostrap.sh
 
 # Quick start
 
-1. Login to http://localhost:8080/login/ with the following credentials and take a look:
+1. Login to http://localhost:8080/login/ with the following credentials:
 ```
 username: admin
 password: admin
