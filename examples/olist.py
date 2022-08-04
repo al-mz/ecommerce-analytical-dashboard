@@ -74,12 +74,6 @@ class Olist():
 
     def populate_tables(self):
         
-        # drop views schema
-        with self.engine.connect() as con:
-            with open(os.path.join(CUR_DIR, "drop_views.sql")) as file:
-                query = sa.text(file.read())
-                con.execute(query)
-
         self.logger.info("Creating Olist PostgreSQL Database ...")
         dfs = self.load_inputs()
 
@@ -109,6 +103,12 @@ class Olist():
 
     def create_views(self):
 
+        # drop views schema
+        with self.engine.connect() as con:
+            with open(os.path.join(CUR_DIR, "drop_views.sql")) as file:
+                query = sa.text(file.read())
+                con.execute(query)
+                
         # Create views
         self.logger.info("Creating Olist PostgreSQL Views ...")
         with self.engine.connect() as con:

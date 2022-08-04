@@ -51,3 +51,8 @@ echo_step "4" "Complete" "Setting up roles and perms"
 echo_step "6" "Starting" "Importing the Olist dashboard"
 superset import-dashboards -p ./olist-dashboard.zip
 echo_step "6" "Complete" "Importing the Olist dashboard"
+
+# Update Olist database connection URI
+echo_step "6" "Starting" "Updating Olist database connection URI"
+superset set_database_uri -d olist-quickstart -u postgresql://postgres:password@db:5432/ecommerce_analytics
+echo_step "6" "Complete" "Updating Olist database connection URI"
