@@ -9,7 +9,6 @@ services:
     volumes:
       - ./config:/media/ecommerce_analytics/config
       - ./data:/media/ecommerce_analytics/data
-      - ./database:/media/ecommerce_analytics/database
       - ./logs:/media/ecommerce_analytics/logs
       - ./utils:/media/ecommerce_analytics/utils
       - ./examples:/media/ecommerce_analytics/examples
