@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Creates Olist PostgreSQL database
+docker exec -it -u root ecommerce_analytics sh -c "conda run --no-capture-output -n marketing_analysis python ./examples/olist.py"
+
 # Initializes the Superset application
 docker exec -ti -u root superset bash -c "sh ./docker-init.sh"
 
