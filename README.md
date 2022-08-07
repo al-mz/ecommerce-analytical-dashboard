@@ -7,7 +7,9 @@ This is a supporting repo to create analyrical dashboard for the [Brazilian E-Co
 
 The visualizations are backed by the open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
 
-![2022-07-17 16-25-55 (5)](https://user-images.githubusercontent.com/59216368/179426482-de72b9de-8e2f-4c02-9787-1cc4459201de.gif)
+![2022-08-07 17-11-01](https://user-images.githubusercontent.com/59216368/183311249-cb96218a-19c6-4eea-b207-22932a861159.gif)
+
+
 
 # Dependecies
 You need to install docker and docker-compose prior to running containers.
