@@ -47,12 +47,12 @@ echo_step "4" "Starting" "Setting up roles and perms"
 superset init
 echo_step "4" "Complete" "Setting up roles and perms"
 
-# Import Olist Ecommerce datasource
-echo_step "5" "Starting" "Importing the Olist Ecommerce datasource"
-superset import-datasources --path ./olis-database.yaml
-echo_step "5" "Complete" "Importing the Olist Ecommerce datasource"
-
 # Import Olist dashboards
 echo_step "6" "Starting" "Importing the Olist dashboard"
-superset import-dashboards -p ./olis-dashboard.zip
+superset import-dashboards -p ./olist-dashboard.zip
 echo_step "6" "Complete" "Importing the Olist dashboard"
+
+# Update Olist database connection URI
+echo_step "6" "Starting" "Updating Olist database connection URI"
+superset set_database_uri -d olist-quickstart -u postgresql://postgres:password@db:5432/ecommerce_analytics
+echo_step "6" "Complete" "Updating Olist database connection URI"

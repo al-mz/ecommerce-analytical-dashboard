@@ -5,21 +5,20 @@ services:
       context: .
       dockerfile: dockerfiles/Dockerfile
     image: ecommerce_analytics
+    container_name: ecommerce_analytics
     volumes:
       - ./config:/media/ecommerce_analytics/config
       - ./data:/media/ecommerce_analytics/data
-      - ./database:/media/ecommerce_analytics/database
       - ./logs:/media/ecommerce_analytics/logs
       - ./utils:/media/ecommerce_analytics/utils
       - ./examples:/media/ecommerce_analytics/examples
       - ./environment.yml:/media/ecommerce_analytics/environment.yml
-      - ./wait-for-it.sh:/media/ecommerce_analytics/wait-for-it.sh:ro
     ports:
       - "8000:8000"
     depends_on:
       - db
     command: >
-      ./wait-for-it.sh db:5432 -- sh -c "conda run --no-capture-output -n marketing_analysis python ./examples/olist.py"
+      sh -c "tail -f /dev/null"
   db:
     image: postgres
     container_name: ecommerce_analytics_db
@@ -50,8 +49,7 @@ services:
       - ./superset-data:/app/superset_home/
       - ./config/superset_config.py:/etc/superset/superset_config.py
       - ./docker/docker-init.sh:/app/docker-init.sh
-      - ./docker/olis-database.yaml:/app/olis-database.yaml
-      - ./docker/olis-dashboard.zip:/app/olis-dashboard.zip
+      - ./docker/olist-dashboard.zip:/app/olist-dashboard.zip
 
 volumes:
   db:
