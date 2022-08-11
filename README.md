@@ -31,7 +31,7 @@ $ cd ecommerce-analytical-dashboard && docker-compose up
 3. After the Docker containers have started and are running, you'll need to bootstrap the cluster to initialize Superset app and dashboard. The following command will connect Superset to the Olist database and import pre-made dashboard:
 
 ```
-$ sh boostrap.sh
+$ sh bootstrap.sh
 ```
 
 # Quick start
