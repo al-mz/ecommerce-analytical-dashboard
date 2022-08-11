@@ -1,15 +1,11 @@
 import os
 import sys
 import pathlib
-from webbrowser import get
 BASE_DIR = pathlib.Path(__file__).parent.parent.resolve()
 CUR_DIR = pathlib.Path(__file__).parent.resolve()
 sys.path.append(str(BASE_DIR))
 
 import sqlalchemy as sa
-from sqlalchemy.ext.compiler import compiles
-from sqlalchemy.ext import compiler
-from sqlalchemy.schema import DDLElement
 from dotenv import load_dotenv
 import pandas as pd
 from utils.load_config import load_config_file
