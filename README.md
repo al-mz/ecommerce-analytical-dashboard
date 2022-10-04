@@ -1,5 +1,5 @@
 # The Ecommerce Dashboard
-This is a supporting repo to create analyrical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to:  
+This is a supporting repo to create analytical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to:  
 1. Build a PostgreSQL database with Olist Ecommerce datasets. 
 2. Create materialized views for sales and geolocation data.
 3. Build and initialize a local Superset instance with default username and password
