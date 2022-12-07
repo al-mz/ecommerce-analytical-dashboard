@@ -29,6 +29,10 @@ services:
     env_file:
       - ./config/.postgres/.postgres.env
     shm_size: '4gb'
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 5s
+      retries: 5
   redis:
     image: redis
     restart: always
