@@ -1,0 +1,14 @@
+bottleneck==1.3.4
+certifi==2022.6.15
+greenlet==1.1.1
+numpy==1.22.3
+numexpr==2.8.1
+packaging==21.3
+pandas==1.4.2
+python-dateutil==2.8.2
+pytz==2022.1
+pyparsing==3.0.4
+psycopg2==2.8.6
+six==1.16.0
+sqlalchemy==1.4.32
+python-dotenv==0.20.0

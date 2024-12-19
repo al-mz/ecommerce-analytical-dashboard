@@ -1,13 +1,19 @@
 version: "3.9"
+
+volumes:
+  local_superset_metadata_db: {}
+  local_postgres_data: {}
+  local_redis_data: {}
+  
 services:
   develop:
     build:
       context: .
-      dockerfile: dockerfiles/Dockerfile
+      dockerfile: docker/Dockerfile
     image: ecommerce_analytics
     container_name: ecommerce_analytics
     volumes:
-      - ./config:/media/ecommerce_analytics/config
+      - ./.envs:/media/ecommerce_analytics/config
       - ./data:/media/ecommerce_analytics/data
       - ./logs:/media/ecommerce_analytics/logs
       - ./utils:/media/ecommerce_analytics/utils
@@ -20,41 +26,62 @@ services:
     command: >
       sh -c "tail -f /dev/null"
   db:
-    image: postgres
+    image: postgres:14
     container_name: ecommerce_analytics_db
     volumes:
-      - ./db-data/:/var/lib/postgresql/data/
+      - local_postgres_data:/var/lib/postgresql/data/
     ports:
       - 5433:5432
     env_file:
-      - ./config/.postgres/.postgres.env
+      - ./.envs/.postgres.env
     shm_size: '4gb'
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "postgres" ]
       interval: 5s
       retries: 5
+    networks:
+        - superset-net
   redis:
     image: redis
     restart: always
     volumes:
-      - redis:/data
+      - local_redis_data:/data
+    networks:
+    - superset-net
+
   superset:
-    image: apache/superset
+    build: 
+      context: .
+      dockerfile: compose/superset/Dockerfile
     container_name: superset
-    restart: always
     depends_on:
       - db
       - redis
+      - metadata_db
     ports:
       - "8088:8088"
     env_file:
-      - ./config/.superset/.superset.env
+      - ./.envs/.superset.env
     volumes:
-      - ./superset-data:/app/superset_home/
-      - ./config/superset_config.py:/etc/superset/superset_config.py
-      - ./docker/docker-init.sh:/app/docker-init.sh
-      - ./docker/olist-dashboard.zip:/app/olist-dashboard.zip
+      - ./compose/superset/superset_config.py:/app/superset/superset_config.py
+      - ./data/olist-dashboard.zip:/app/olist-dashboard.zip
+    networks:
+        - superset-net
 
-volumes:
-  db:
-  redis:
+  metadata_db:
+      image: postgres:14
+      container_name: metadata_db
+      hostname: metadata_db
+      env_file:
+        - ./.envs/.superset.env
+      volumes:
+        - local_superset_metadata_db:/var/lib/postgresql/data
+      ports:
+        - "5435:5432"
+      networks:
+        - superset-net
+
+networks:
+  traefik-net:
+  superset-net:
+    driver: bridge
