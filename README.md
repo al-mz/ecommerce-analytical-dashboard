@@ -13,7 +13,8 @@ The visualizations are backed by the open-source BI tool, [Apache-Superset](http
 
 # Dependecies
 You need to install docker and docker-compose prior to running containers.
-
+You also need a Mapbox API key to provide basemap for your map visualizations. 
+Get your free mapbox api from https://www.mapbox.com/.
 
 # Installation
 1. Clone this repo:
@@ -24,7 +25,9 @@ $ git clone https://github.com/ali-mhmzadeh/ecommerce-analytical-dashboard.git
 2. Start dockerized services. PostgreSQL will run on ports 5433, just in case you already have Postgres running: 
 
 ```
-$ cd ecommerce-analytical-dashboard && docker-compose up
+$ cd ecommerce-analytical-dashboard
+$ export MAPBOX_API_KEY = <YOUR-MAPBOX-API-KEY>
+$ docker-compose up
 ```
 
 ## Initialize Superset App
