@@ -9,16 +9,11 @@ services:
   develop:
     build:
       context: .
-      dockerfile: docker/Dockerfile
-    image: ecommerce_analytics
-    container_name: ecommerce_analytics
+      dockerfile: ./compose/database_builder/Dockerfile
+    image: database_builder
+    container_name: database_builder
     volumes:
-      - ./.envs:/media/ecommerce_analytics/config
-      - ./data:/media/ecommerce_analytics/data
-      - ./logs:/media/ecommerce_analytics/logs
-      - ./utils:/media/ecommerce_analytics/utils
-      - ./examples:/media/ecommerce_analytics/examples
-      - ./environment.yml:/media/ecommerce_analytics/environment.yml
+      - .:/app
     ports:
       - "8000:8000"
     depends_on:
