@@ -96,21 +96,6 @@ class Olist():
             except:
                 self.logger.info(f"Table {table} already exists, skipping it ...")
 
-    def create_views(self):
-
-        # drop views schema
-        with self.engine.connect() as con:
-            with open(os.path.join(CUR_DIR, "drop_views.sql")) as file:
-                query = sa.text(file.read())
-                con.execute(query)
-                
-        # Create views
-        self.logger.info("Creating Olist PostgreSQL Views ...")
-        with self.engine.connect() as con:
-            with open(os.path.join(CUR_DIR, "views.sql")) as file:
-                query = sa.text(file.read())
-                con.execute(query)
-
     @staticmethod
     def unzip_file(path_to_zip_file):
         import zipfile
@@ -122,4 +107,3 @@ if __name__=='__main__':
 
     olist = Olist(os.path.join(BASE_DIR, '.envs', 'config.ini'))
     olist.populate_tables()
-    olist.create_views()

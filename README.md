@@ -1,9 +1,8 @@
 # The Ecommerce Dashboard
 This is a supporting repo to create analytical dashboard for the [Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset by Kaggle. Current version provides a containarized platform to:  
 1. Build a PostgreSQL database with Olist Ecommerce datasets. 
-2. Create materialized views for sales and geolocation data.
-3. Build and initialize a local Superset instance with default username and password
-4. Import a pre-made dashboard named Olist. 
+2. Build and initialize a local Superset instance with default username and password
+3. Import a pre-made dashboard named Olist. 
 
 The visualizations are backed by the open-source BI tool, [Apache-Superset](https://superset.apache.org/). Implementation is fully dockerized and can be reproduced in various environments. 
 
@@ -30,19 +29,12 @@ $ export MAPBOX_API_KEY = <YOUR-MAPBOX-API-KEY>
 $ docker-compose up
 ```
 
-## Initialize Superset App
-3. After the Docker containers have started and are running, you'll need to bootstrap the cluster to initialize Superset app and dashboard. The following command will connect Superset to the Olist database and import pre-made dashboard:
-
-```
-$ sh bootstrap.sh
-```
-
 # Quick start
 
 1. Login to http://localhost:8080/login/ with the following credentials:
 ```
 username: admin
-password: admin
+password: 1234
 ```
 
 2. Navigate to the Dashboards and take a look at the olist dashboard. 
