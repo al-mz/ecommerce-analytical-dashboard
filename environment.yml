@@ -1,12 +1,51 @@
 name: ecom
 channels:
   - defaults
+  - conda-forge
 dependencies:
-  - python=3.9
-  - numpy
-  - pandas
-  - sqlalchemy
-  - psycopg2
-  - pip
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=51_gnu
+  - blas=1.0=openblas
+  - bottleneck=1.4.2=py39hf6ef57e_0
+  - ca-certificates=2024.11.26=hd43f75c_0
+  - cyrus-sasl=2.1.28=h647bc0d_1
+  - greenlet=3.1.1=py39h419075a_0
+  - krb5=1.20.1=h2e2fba8_1
+  - ld_impl_linux-aarch64=2.40=h48e3ba3_0
+  - libedit=3.1.20230828=h998d150_0
+  - libffi=3.4.4=h419075a_1
+  - libgcc-ng=11.2.0=h1234567_1
+  - libgfortran-ng=11.2.0=h6e398d7_1
+  - libgfortran5=11.2.0=h1234567_1
+  - libgomp=11.2.0=h1234567_1
+  - libopenblas=0.3.21=hc2e42e2_0
+  - libpq=17.2=h6ac735f_0
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - ncurses=6.4=h419075a_0
+  - numexpr=2.10.1=py39hd351863_0
+  - numpy=2.0.1=py39he45c16d_1
+  - numpy-base=2.0.1=py39h15d264d_1
+  - openldap=2.6.4=h418a7c9_0
+  - openssl=3.0.15=h998d150_0
+  - pandas=2.2.3=py39h419075a_0
+  - pip=24.2=py39hd43f75c_0
+  - psycopg2=2.9.9=py39h998d150_1
+  - python=3.9.21=h4bb2201_1
+  - python-dateutil=2.9.0post0=py39hd43f75c_2
+  - python-tzdata=2023.3=pyhd3eb1b0_0
+  - pytz=2024.1=py39hd43f75c_0
+  - readline=8.2=h998d150_0
+  - setuptools=75.1.0=py39hd43f75c_0
+  - six=1.16.0=pyhd3eb1b0_1
+  - sqlalchemy=2.0.34=py39hbdf51f2_0
+  - sqlite=3.45.3=h998d150_0
+  - tk=8.6.14=h987d8db_0
+  - typing-extensions=4.12.2=py39hd43f75c_0
+  - typing_extensions=4.12.2=py39hd43f75c_0
+  - tzdata=2024b=h04d1e81_0
+  - wheel=0.44.0=py39hd43f75c_0
+  - xz=5.4.6=h998d150_1
+  - zlib=1.2.13=h998d150_1
   - pip:
-      - python-dotenv
+      - python-dotenv==1.0.1
+prefix: /root/miniforge3/envs/ecom
