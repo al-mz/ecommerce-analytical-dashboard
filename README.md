@@ -37,7 +37,7 @@ username: admin
 password: 1234
 ```
 
-2. Navigate to the Dashboards and take a look at the olist dashboard. 
+2. Navigate to the Dashboards section and take a look at the olist dashboard. 
 
 
 
