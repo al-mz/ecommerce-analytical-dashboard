@@ -96,7 +96,6 @@ class Olist():
             except:
                 self.logger.info(f"Table {table} already exists, skipping it ...")
 
-
     def create_views(self):
 
         # drop views schema
@@ -121,6 +120,6 @@ class Olist():
 
 if __name__=='__main__':
 
-    olist = Olist(os.path.join(BASE_DIR, 'config', 'config.ini'))
+    olist = Olist(os.path.join(BASE_DIR, '.envs', 'config.ini'))
     olist.populate_tables()
     olist.create_views()

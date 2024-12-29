@@ -21,7 +21,7 @@ RUN rm Miniforge3-Linux-aarch64.sh
 
 # -----------------------------------------------------------------------------
 
-WORKDIR /media/ecommerce_analytics
+WORKDIR /app
 
 # Copy conda env
 COPY environment.yml .

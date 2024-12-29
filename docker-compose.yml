@@ -18,6 +18,11 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    env_file:
+      - ./.envs/.postgres.env
+      - ./.envs/.superset.env
+    networks:
+        - superset-net
     command: >
       sh -c "tail -f /dev/null"
   db:
@@ -42,7 +47,7 @@ services:
     volumes:
       - local_redis_data:/data
     networks:
-    - superset-net
+      - superset-net
 
   superset:
     build: 
@@ -63,7 +68,7 @@ services:
       - ./compose/superset/superset_config.py:/app/superset/superset_config.py
       - ./data/olist-dashboard.zip:/app/olist-dashboard.zip
     networks:
-        - superset-net
+      - superset-net
 
   metadata_db:
       image: postgres:14
@@ -79,6 +84,5 @@ services:
         - superset-net
 
 networks:
-  traefik-net:
   superset-net:
     driver: bridge

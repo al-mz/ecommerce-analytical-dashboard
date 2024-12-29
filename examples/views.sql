@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS dbview_schema.cleaned_sales_data CASCADE; -- cleaned sales data
-CREATE MATERIALIZED VIEW dbview_schema.cleaned_sales_data AS
+DROP VIEW IF EXISTS cleaned_sales_data CASCADE; -- cleaned sales data
+CREATE MATERIALIZED VIEW cleaned_sales_data AS
     SELECT olist_orders_dataset.order_id, 
     order_purchase_timestamp, 
     payment_value, 
@@ -14,20 +14,20 @@ CREATE MATERIALIZED VIEW dbview_schema.cleaned_sales_data AS
     WHERE order_status = 'delivered' AND order_delivered_customer_date IS NOT NULL
     ORDER BY order_purchase_timestamp;
 
-DROP VIEW IF EXISTS dbview_schema.customer_purchase_trend CASCADE; -- customer purchase trend
-CREATE VIEW dbview_schema.customer_purchase_trend AS
+DROP VIEW IF EXISTS customer_purchase_trend CASCADE; -- customer purchase trend
+CREATE VIEW customer_purchase_trend AS
 select 
 count(payment_value) as total_purchases,
 sum(payment_value) as total_revenue,
 year,
 to_char(order_purchase_timestamp, 'Month') as month,
 CAST(to_char(order_purchase_timestamp, 'MM') as INT) as month_no
-from dbview_schema.cleaned_sales_data
+from cleaned_sales_data
 group by year, month, month_no;
 
 
-DROP VIEW IF EXISTS dbview_schema.geolocation CASCADE; -- geolocation data
-CREATE MATERIALIZED VIEW dbview_schema.geolocation AS
+DROP VIEW IF EXISTS geolocation CASCADE; -- geolocation data
+CREATE MATERIALIZED VIEW geolocation AS
     SELECT
     SUM(payment_value) as total_payment, 
     ROUND(CAST(geolocation_lat as NUMERIC), 2) geolocation_lat, 
